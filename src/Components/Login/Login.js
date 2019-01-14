@@ -1,13 +1,15 @@
 import React, { Component } from "react";
+
 import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import "../Login/Login.css";
-
+import fire from "../../index"
 export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            text: 'zaloguj'
         };
     }
 
@@ -23,13 +25,30 @@ export default class Login extends Component {
 
     handleSubmit = event => {
         event.preventDefault();
+        fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
+            alert("zalogowano")
+            if (this.state.email && this.state.password) {
+                console.log('istnieje');
+                this.setState({
+                    text: "zalogowano"
+                })
+            }
+        }).catch((error) => {
+            alert(error);
+        });
     }
 
+
     render() {
+        const childProps = {
+            isAuthenticated: this.state.isAuthenticated,
+            userHasAuthenticated: this.userHasAuthenticated
+        };
         return (
             <div className="popup">
                 <div className="Login popup_inner">
                     <form onSubmit={this.handleSubmit}>
+                        <Button className="exit" onClick={this.props.click}>X</Button>
                         <FormGroup controlId="email" bsSize="large">
                             <ControlLabel>Email</ControlLabel>
                             <FormControl
@@ -51,8 +70,16 @@ export default class Login extends Component {
                             disabled={!this.validateForm()}
                             type="submit" >
                             Login
-                    </Button>
-                        <button onClick={this.props.click}>zamknij</button>
+                        </Button>
+                        <Button
+                            block
+                            bsSize="large"
+                            disabled={!this.validateForm()}
+                            type="submit" >
+                            Sign up
+                        </Button>
+
+
 
                     </form>
                 </div>

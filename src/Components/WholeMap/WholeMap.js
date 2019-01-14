@@ -28,25 +28,14 @@ export default class WholeMaps extends Component {
           data_list.push(childData);
         });
       });
-    console.log(data_list)
-    console.log(typeof (data_list));
-    console.log(this.state.data)
-    console.log(typeof (this.state.data))
-
-
-
   }
 
   clickhendler = () => {
-    console.log('super')
     this.setState({
       hover: true,
-
     });
 
   }
-
-
 
   render() {
 
