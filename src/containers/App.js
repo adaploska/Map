@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, HashRouter } from 'react-router-dom';
+// import { Route, HashRouter } from 'react-router-dom';
 import WholeMap from ".././Components/WholeMap/WholeMap"
 import FindPlace from ".././Components/FindPlace/FindPlace"
 import InfoPlace from ".././Components/InfoPlace/InfoPlace"
@@ -10,13 +10,16 @@ class App extends Component {
     super(props)
     this.state = {
       showLogin: false,
+
     }
   }
+
 
   loginHendler = () => {
     const doesShowLogin = this.state.showLogin;
     this.setState({
-      showLogin: !doesShowLogin
+      showLogin: !doesShowLogin,
+
     });
 
   }
@@ -25,16 +28,15 @@ class App extends Component {
     if (this.state.showLogin) {
       login = <Login click={this.loginHendler} />
     }
+
     return (
 
       <div>
         <Header click={this.loginHendler}></Header>
-
         <WholeMap />
         <FindPlace />
         <InfoPlace />
         {login}
-
       </div>
 
     );

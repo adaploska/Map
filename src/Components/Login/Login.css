@@ -1,6 +1,6 @@
 @media all and (min-width: 480px) {
     .Login {
-      padding: 60px 0;
+      padding: 26px 0;
     }
   
     .Login form {
@@ -8,6 +8,11 @@
       max-width: 320px;
      
     }
+  }
+  .exit{
+    position: absolute;
+    top: 0;
+    right: 0;
   }
   .popup{
   position: fixed;

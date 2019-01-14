@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from "react-router-dom";
 import './index.css';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
@@ -15,6 +16,9 @@ var config = {
   messagingSenderId: "737843525394"
 };
 
-firebase.initializeApp(config);
-ReactDOM.render(<App />, document.getElementById('root'));
+const fire = firebase.initializeApp(config);
+ReactDOM.render(<Router>
+  <App />
+</Router>, document.getElementById('root'));
 serviceWorker.unregister();
+export default fire
